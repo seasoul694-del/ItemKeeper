@@ -1,0 +1,22 @@
+# IDE / Gradle
+*.iml
+.gradle/
+.idea/
+local.properties
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+.DS_Store
+
+# ===== 签名资产：绝不提交到 GitHub =====
+*.jks
+*.keystore
+*.pepk
+keystore.properties
+signing-keys/
+
+# 构建产物由 GitHub Releases 承载，不进仓库
+*.apk
+*.aab
