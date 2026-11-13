@@ -22,9 +22,10 @@
 - **Five-tab navigation**: Home list / Summary / Add / Filter / Settings — the glass bottom bar supports both taps and horizontal drags
 - **Item profiles**: name, price, purchase date (three-wheel picker), platform (9 quick picks + free input), status, category, notes — plus a real photo for every item
 - **In-place expansion**: tap an item card to expand it right where it sits; edit / delete / change photo are always one tap away
-- **Summary stats**: rolling counters for total spend, item count and total daily cost, plus a per-category bar chart that grows from zero on entry (scrollable and looping when you have many categories)
+- **Summary stats**: rolling counters for total spend, item count and total daily cost, plus a per-category bar chart that grows from zero on entry (horizontally scrollable with many categories)
 - **Four-dimension filtering**: price range / purchase date range / status / category — leave anything empty for no limit
 - **Eight sort modes**: date, price and daily cost each in both directions; group by category or status — your choice is remembered
+- **Item lifecycle**: switching an item to "Used up / Scrapped / Sold / Lost" opens a glass sheet for the **end date** (and **sale price** for sold items) — its daily cost freezes at that date forever; "Sold" uses net cost (price − sale price). Ended items always sort below in-use ones with greyed-out prices
 - **Category management**: preset + custom categories, deletable at any time; historical items are never affected
 - **Global background**: one image fills the whole screen; the status bar and gesture bar float transparently on top of it
 
@@ -45,7 +46,13 @@
 
 ## 💡 Daily cost formula
 
-`daily cost = price ÷ days held`, where `days held = days since purchase + 1` (the purchase day itself counts as day 1; unusual dates fall back to 1). A ¥100 item used for 200 days costs you ¥0.50 per day.
+`daily cost = cost ÷ counted days` (counted days = span + 1; the purchase day itself counts as day 1):
+
+- **In use** (In use / Idle / Given away): cost = purchase price, counted up to today, decreasing every day
+- **Ended** (Used up / Scrapped / Sold / Lost): counted only up to the **end date** — the daily cost **freezes forever** afterwards
+- **Sold**: cost = purchase price − sale price (net cost), spread over the holding period
+
+A ¥100 item used for 200 days costs ¥0.50/day; if sold on day 200 for ¥60, the net cost is ¥40 and the daily cost freezes at ¥0.20/day. The Summary card's "total daily cost" only accumulates in-use items.
 
 ## 🛠 Tech stack
 
