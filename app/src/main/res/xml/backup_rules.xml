@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 及以下：仅备份物品清单与设置，不备份应用缓存 -->
+<full-backup-content>
+    <include domain="file" path="items.json" />
+    <include domain="sharedpref" path="itemkeeper_settings.xml" />
+</full-backup-content>
