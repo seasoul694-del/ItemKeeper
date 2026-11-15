@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12 及以上：云备份 / 换机转移的数据范围 -->
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="file" path="items.json" />
+        <include domain="sharedpref" path="itemkeeper_settings.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <include domain="file" path="items.json" />
+        <include domain="sharedpref" path="itemkeeper_settings.xml" />
+    </device-transfer>
+</data-extraction-rules>
